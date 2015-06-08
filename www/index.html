@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>My App</title>  
+  
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+
+  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <script src="lib/onsen/js/onsenui.js"></script>    
+  <script src="lib/onsen/js/app.js"></script>
+
+  <script src="cordova.js"></script>
+
+</head>
+
+<body>    
+	<!-- SLIDE -->
+   <ons-sliding-menu
+    menu-page="menu.html" main-page="login.html" side="right"
+    var="menu" type="reveal" max-slide-distance="230px" swipeable="true">
+  </ons-sliding-menu>
+
+
+	<!-- Menu / Drawer -->
+  <ons-template id="menu.html">
+    <ons-page modifier="menu-page">
+      <ons-toolbar modifier="transparent"></ons-toolbar>
+
+      <ons-list class="menu-list">
+        <ons-list-item class="menu-item" ng-click="menu.setMainPage('profile.html', {closeMenu: true})">
+          <ons-icon icon="ion-person" fixed-width="true"></ons-icon>
+          John Petalcurin
+        </ons-list-item>
+      </ons-list>
+
+      <br>
+
+      <ons-list class="bottom-menu-list">
+        <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('home.html', {closeMenu: true})">
+          HOME
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('home.html', {closeMenu: true})">
+          SHOP
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="menu.setMainPage('login.html', {closeMenu: true})">
+          LOGOUT
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+
+	<!-- LOGIN -->
+  <ons-template id="login.html">
+  <ons-navigator var="navi">
+  	<ons-page>
+		<ons-row style="margin-top: 100px;">
+			<ons-col>
+				<section>
+					<ons-button modifier="large--cta" ng-click="menu.setMainPage('home.html',{closeMenu: true})">
+						Login
+					</ons-button>
+				</section><br>
+				<section>
+					<ons-button modifier="large--cta" ng-click="navi.pushPage('signup.html')">
+						SignUp
+					</ons-button>
+				</section>
+			</ons-col>
+		</ons-row>
+  	</ons-page>
+  </ons-navigator>
+  </ons-template>
+
+	<!-- SIGNUP -->
+  	<ons-template id="signup.html">
+		<ons-page>
+			<ons-toolbar>
+				<section class="left">
+					<ons-back-button>Back</ons-back-button>
+				</section>
+				<section class="center">Sign Up</section>
+			</ons-toolbar>
+    		<ons-row style="margin-top: 100px;">
+	  			<ons-col>
+	  				<section>
+	  					<ons-button modifier="large--cta" ng-click="menu.setMainPage('login.html',{closeMenu: true})">
+							Cancel
+		  				</ons-button>
+	  				</section><br>
+	  				<section>
+	  					<ons-button modifier="large--cta" ng-click="menu.setMainPage('home.html',{closeMenu: true})">
+							Save
+		  				</ons-button>
+	  				</section>
+	  			</ons-col>
+	  		</ons-row>
+		</ons-page>
+	</ons-template>
+
+
+		<!-- HOME -->
+	<ons-template id="home.html">
+		<ons-navigator var="myNav">
+			<ons-page>
+				<ons-toolbar>
+					<section class="right">
+						<ons-toolbar-button ng-click="menu.toggle()">
+							<ons-icon icon="ion-navicon" size="38px;" fixed-width="false"></ons-icon>
+						</ons-toolbar-button>
+					</section>
+					<section class="center">Home</section>
+				</ons-toolbar>
+
+				<ons-list>
+					<ons-list-item ng-click="myNav.pushPage('list.html')">
+						Go Pro
+					</ons-list-item>
+					<ons-list-item ng-click="myNav.pushPage('list.html')">
+						Phone
+						</ons-list-item>
+					<ons-list-item ng-click="myNav.pushPage('list.html')">
+						Tablet
+					</ons-list-item>
+					<ons-list-item ng-click="myNav.pushPage('list.html')">
+						Phablet
+					</ons-list-item>
+				</ons-list>
+			</ons-page>
+		</ons-navigator>
+	</ons-template>	<!-- end -->
+	
+	<!-- LIST -->
+	<ons-template id="list.html">
+		<ons-page>
+			<ons-toolbar>
+				<section class="left">
+					<ons-back-button>Back</ons-back-button>
+				</section>
+				<section class="center">Title</section>
+			</ons-toolbar>
+		</ons-page>
+	</ons-template>
+
+	
+  <!-- PROFILE -->
+  <ons-template id="profile.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="right">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Profile</div>
+      </ons-toolbar>
+
+      <ons-row style="margin-top: 100px; text-align: center;">
+        <ons-col>
+          <p>Profile Page</p>
+        </ons-col>
+      </ons-row>
+
+    </ons-page>
+  </ons-template> 
+
+ 
+</body>
+</html>
